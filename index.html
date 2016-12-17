@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+
+    <title>alb-TEC easyCOM</title>
+
+    <!--<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">-->
+    <style>
+	h1 {
+		color: #E9E9E9;	
+		margin-right: 20px;
+        text-align: right;
+	}
+	.x-panel-header-default, .x-tab-bar-default, 
+	.x-window-header-default-top, 
+	.x-window-header-default,
+	.x-btn-default-small {
+		background-image: url('resources/bar-default.png') !important;
+		background-repeat: no-repeat!important; 
+		background-position: 50% 50%!important; 
+		background-attachment: scroll!important; 
+		background-size: cover!important;
+	}
+	.x-panel-header-default .x-tool-tool-el, .x-window-header-default .x-tool-img{
+		background: transparent !important;
+	}
+    </style>	
+
+    <script type="text/javascript">
+        var Ext = Ext || {}; // Ext namespace won't be defined yet...
+
+        // This function is called by the Microloader after it has performed basic
+        // device detection. The results are provided in the "tags" object. You can
+        // use these tags here or even add custom tags. These can be used by platform
+        // filters in your manifest or by platformConfig expressions in your app.
+        //
+        Ext.beforeLoad = function (tags) {
+            var s = location.search,  // the query string (ex "?foo=1&bar")
+                profile;
+
+            // For testing look for "?classic" or "?modern" in the URL to override
+            // device detection default.
+            //
+            if (s.match(/\bclassic\b/)) {
+                profile = 'classic';
+            }
+            else if (s.match(/\bmodern\b/)) {
+                profile = 'modern';
+            }
+            else {
+                profile = tags.desktop ? 'classic' : 'modern';
+                //profile = tags.phone ? 'modern' : 'classic';
+            }
+
+            Ext.manifest = profile; // this name must match a build profile name
+
+            // This function is called once the manifest is available but before
+            // any data is pulled from it.
+            //
+            //return function (manifest) {
+                // peek at / modify the manifest object
+            //};
+        };
+    </script>
+    
+    
+    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
+    <script id="microloader" data-app="9c731bcf-fc26-4f06-ac67-00cb0bc0f1b1" type="text/javascript" src="bootstrap.js"></script>
+
+</head>
+<body></body>
+</html>
