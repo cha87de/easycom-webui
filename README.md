@@ -26,5 +26,5 @@ You are now ready to develop and build the easycom-webui app.
 Please see the [Sencha Cmd Guide](http://docs.sencha.com/cmd/index.html) for more details.
 
 ## Operators Guide
-TBD: how to deploy easycom webui
-(Issue 1 is to provide a build)
+Please check the [easycom-webui releases](https://github.com/cha87de/easycom-webui/releases) for a production ready build. 
+E.g. take the attached easycom-webui.tgz of the [latest release](https://github.com/cha87de/easycom-webui/releases/latest).
