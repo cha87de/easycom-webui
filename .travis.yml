@@ -1,0 +1,36 @@
+language: node_js
+node_js:
+- '0.12'
+before_script:
+- wget http://cdn.sencha.com/cmd/6.2.0/no-jre/SenchaCmd-6.2.0-linux-amd64.sh.zip
+- unzip SenchaCmd-6.2.0-linux-amd64.sh.zip
+- chmod +x SenchaCmd-6.2.0.103-linux-amd64.sh
+- "./SenchaCmd-6.2.0.103-linux-amd64.sh -q"
+- export PATH=~/bin/Sencha/Cmd/6.2.0.103:$PATH
+script:
+- cd ..
+- sencha generate workspace .
+- mv workspace.json workspace.json.tmp
+- head -n -2 workspace.json.tmp > workspace.json
+- |-
+  echo -e "    },
+      \"frameworks\": {
+          \"ext\": {
+              \"path\":\"~/bin/sencha/ext\",
+              \"version\":\"6.2.0\"
+          }
+      }
+  }" >> workspace.json
+- cd easycom-webui
+- sencha app install
+- sencha app build
+- tar cfz easycom-webui.tgz ../build/production/
+deploy:
+  provider: releases
+  api_key:
+    secure: rP9tylqL+YxhRp/nZvZhzZyrHetQ1XABvkIMl3YiWIWKcFLqG951J6Fsq3sq1sR8FV42eB/OylAQzZ3gv+RAmjtd4NnytJdcJFKW2eg2q0ZDgaGZHJfvK0aOJeh8T9nOnC44dUOwElx25wxszmyLxudiuQL7I3SDn0cUKkQy5QhPLzJEshAmA9yQPVi0Ihzjy8ZFiKGyrHOmoVgpkFLYExClTW4yaBsh5L29Mk79kCoBdDBrZI1WAY0SUGvxbXzeN5HyTbiNetFWeOALltP89QUe+Zb76ZuxtO6QeBeETEKozPjOp7JhVoXEhELUy97z3ueHGbfABxEMBS8hP+vTOa3N10C3ttwsB2qFVAvElOKAYikzGYdM9+mTd4+bDUM/D1SQ29JuaM+mPvBuueryPz0w+kRAg1l/7z75uycblV1WKFEeZFXt5Lw42lh7je7ZUJKvsXKV3bkBNhyWzwm77XHTJ4pE4cnA9I0HGFt+7E/Vh44aujJJC5OxWcA3v/9MEOYnlusX7rtnSkkBhQ7J1IrAvGZY9ZfG/JTpcjR2LtATleY3+rLT3IrUAUsM/xlvp+wbFFVTN6xIOs25IoColTlKHZdCgbBJ5r4DT5ipbPie6jYQd1V7IbEI+To4qPj5wo6W4DBy1CcPEPd/JkAVg3bTMgCW+kLPaxjJJxLDQKE=
+  file: "easycom-webui.tgz"
+  skip_cleanup: true
+  on:
+    repo: cha87de/easycom-webui
+    tags: true
