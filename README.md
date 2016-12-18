@@ -1,4 +1,4 @@
-# easycom webui
+# easycom webui [![Build Status](https://travis-ci.org/cha87de/easycom-webui.svg?branch=build-test)](https://travis-ci.org/cha87de/easycom-webui)
 This is the web user interface of easycom, built with Sencha ExtJS 6.2 GPL.
 For more information about easycom, please check the higher 
 level [easycom repository](https://github.com/cha87de/easycom).
