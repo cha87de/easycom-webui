@@ -8,7 +8,7 @@ Ext.define('albtec.easycom.view.invoice.ListController', {
 
     alias: 'controller.invoicelist',
 
-    addInvoice: function(){
+    addInvoice: function () {
         var vm = this.getViewModel();
         var store = vm.get("customerlist.selection.invoices");
         var customer = vm.get("customerlist.selection");
@@ -23,16 +23,16 @@ Ext.define('albtec.easycom.view.invoice.ListController', {
         this.openWindow();
     },
 
-    editInvoice: function(){
-	    this.openWindow();
-    },    
+    editInvoice: function () {
+        this.openWindow();
+    },
 
-    delInvoice: function(){
+    delInvoice: function () {
         var invoice = this.getViewModel().get("invoicelist.selection");
         var invoicestore = this.getViewModel().get("customerlist.selection.invoices");
-	var customer = this.getViewModel().get("customerlist.selection");
-        Ext.MessageBox.confirm("Delete Invoice", "Are you sure you want to remove the selected invoice?", function(btn){
-            if(btn !== 'yes'){
+        var customer = this.getViewModel().get("customerlist.selection");
+        Ext.MessageBox.confirm("Delete Invoice", "Are you sure you want to remove the selected invoice?", function (btn) {
+            if (btn !== 'yes') {
                 return;
             }
             // remove invoiceitems
@@ -52,54 +52,52 @@ Ext.define('albtec.easycom.view.invoice.ListController', {
             // remove invoice
             invoicestore.remove(invoice);
             invoicestore.sync();
-	    
-	    // reload customer
-	    customer.store.reload();
-        });
-    },    
 
-    invoiceDownload: function(){
-        var id = this.getViewModel().get("invoicelist.selection.id");
-
-	Ext.DomHelper.append(Ext.getBody(), {
-	    tag:          'iframe',
-	    frameBorder:  0,
-	    width:        0,
-	    height:       0,
-	    css:          'display:none;visibility:hidden;height:0px;',
-	    src:          'action/invoice/pdf?invoice='+id
-	});	
-	/*
-        Ext.Ajax.request({
-            url: ,
-	    method: 'GET',
-	    autoAbort: false,
-
-            success: function(response, opts) {
-
-            },
-
-            failure: function(response, opts) {
-                // TODO
-            }
-        });
-	*/
-    },    
-
-    invoiceMarkPaid: function(){
-        var invoice = this.getViewModel().get("invoicelist.selection");
-        Ext.MessageBox.confirm("Invoice Paid?", "Are you sure you want to mark the invoice as paid?", function(btn){
-            if(btn !== 'yes'){
-                return;
-            }
-            invoice.set("ispaid", true);
-            invoice.save();
+            // reload customer
+            customer.store.reload();
         });
     },
 
-    openWindow: function(){
+    invoiceDownload: function () {
+        var id = this.getViewModel().get("invoicelist.selection.id");
+
+        Ext.DomHelper.append(Ext.getBody(), {
+            tag: 'iframe',
+            frameBorder: 0,
+            width: 0,
+            height: 0,
+            css: 'display:none;visibility:hidden;height:0px;',
+            src: 'action/invoice/pdf?invoice=' + id
+        });
+        /*
+            Ext.Ajax.request({
+                url: ,
+            method: 'GET',
+            autoAbort: false,
+    
+                success: function(response, opts) {
+    
+                },
+    
+                failure: function(response, opts) {
+                    // TODO
+                }
+            });
+        */
+    },
+
+    invoiceMarkPaid: function () {
+        var win = Ext.create('albtec.easycom.view.invoice.PaymentWindow');
+        var invoice = this.getViewModel().get("invoicelist.selection");
+        var now = new Date().getTime() / 1000;
+        invoice.set("ispaid", true);
+        invoice.set("paymentdate", now);
+        win.show();
+    },
+
+    openWindow: function () {
         var win = Ext.create('albtec.easycom.view.invoice.Window');
         win.show();
-    }    
-    
+    }
+
 });

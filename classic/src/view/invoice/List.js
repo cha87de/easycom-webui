@@ -42,7 +42,13 @@ Ext.define('albtec.easycom.view.invoice.List', {
 	    }},
 	    {text: "Paid", width: 70, dataIndex: 'ispaid', xtype: 'checkcolumn',
 			processEvent: function () { return false; } // make read only
-	    }
+		},
+		{text: "Payment", width: 110, dataIndex: 'paymentdate', renderer: function(val, meta, invoice){
+			if(invoice.get("ispaid")){
+				return Ext.util.Format.date(val, 'd.m.Y')
+			}
+			return '';			
+		}}
     ],
     
     bind: '{customerlist.selection.invoices}',

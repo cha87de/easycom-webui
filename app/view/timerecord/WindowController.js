@@ -8,14 +8,14 @@ Ext.define('albtec.easycom.view.timerecord.WindowController', {
 
     alias: 'controller.timerecordwindow',
 
-    onSaveSuccessful: function(){
-	this.getView().close();
+    onSaveSuccessful: function () {
+        this.getView().close();
     },
-    
-    onClose: function(){
-	this.getViewModel().get("customerlist.selection.timerecords").rejectChanges();
-	this.getViewModel().get('timerecordlist.selection').reject();
-	this.getViewModel().get("customerlist.selection.timerecords").reload();
+
+    onClose: function () {
+        this.getViewModel().get("customerlist.selection.timerecords").rejectChanges();
+        this.getViewModel().get('timerecordlist.selection').reject();
+        this.getViewModel().get("customerlist.selection.timerecords").reload();
     }
 
 });
