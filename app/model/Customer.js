@@ -21,6 +21,6 @@ Ext.define('albtec.easycom.model.Customer', {
         {name: 'taxid', type: 'string'},
         {name: 'email', type: 'string'},
         {name: 'phone', type: 'string'},
-        {name: 'defaultrate', type: 'float'},
+        {name: 'defaultrate', type: 'float'}
     ]
 });
