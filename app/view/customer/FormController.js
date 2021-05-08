@@ -8,25 +8,25 @@ Ext.define('albtec.easycom.view.customer.FormController', {
 
     alias: 'controller.customerform',
 
-    onFormReset: function(){
-	var customer = this.getViewModel().get('currentCustomer');
-	customer.reject();
+    onFormReset: function () {
+        var customer = this.getViewModel().get('currentCustomer');
+        customer.reject();
     },
 
-    onFormSubmit: function(){
-	var customer = this.getViewModel().get('currentCustomer');
-	var self = this;
-	customer.save({
-	     success:function(rec,op) {
-		// well done ... reload
-		self.getViewModel().getStore('customers').reload();
-		//Ext.fly('customerlist').getSelectionModel().select(rec);
-	     },
-	     failure:function(rec,op) {
-		console.info(rec, op);
-		Ext.MessageBox.alert('Failed saving customer details', 'An error occured while saving the customer details.');
-	     }
-	});	
+    onFormSubmit: function () {
+        var customer = this.getViewModel().get('currentCustomer');
+        var self = this;
+        customer.save({
+            success: function (rec, op) {
+                // well done ... reload
+                self.getViewModel().getStore('customers').reload();
+                //Ext.fly('customerlist').getSelectionModel().select(rec);
+            },
+            failure: function (rec, op) {
+                console.info(rec, op);
+                Ext.MessageBox.alert('Failed saving customer details', 'An error occured while saving the customer details.');
+            }
+        });
     }
 
 });

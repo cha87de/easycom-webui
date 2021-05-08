@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 Ext.define('albtec.easycom.view.invoice.Window', {
     extend: 'Ext.Window',

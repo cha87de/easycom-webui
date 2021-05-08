@@ -6,36 +6,36 @@ Ext.define('albtec.easycom.view.customer.List', {
     xtype: 'customerlist',
 
     requires: [
-	'albtec.easycom.model.Customer',
-	'albtec.easycom.view.customer.ListController'
+        'albtec.easycom.model.Customer',
+        'albtec.easycom.view.customer.ListController'
     ],
 
     title: 'Customers',
-    
+
     controller: 'customerlist',
     reference: 'customerlist',
-    
+
     columns: [
         {text: "Nr", width: 50, dataIndex: 'number'},
-        {text: "Name", flex:1, dataIndex: 'name'}
-    ],    
+        {text: "Name", flex: 1, dataIndex: 'name'}
+    ],
 
-    tbar: [  
-	{ 
-		xtype: 'button', 
-		text: 'New', 
-		handler: 'customerAdd', 
-		glyph: 0xf016 
-	},{ 
-		xtype: 'button', 
-		text: 'Delete', 
-		handler: 'customerDel', 
-		glyph: 0xf1f8,
-		disabled: true,
-		bind: {
-			disabled: '{!customerlist.selection}'
-		}
-	} 
+    tbar: [
+        {
+            xtype: 'button',
+            text: 'New',
+            handler: 'customerAdd',
+            glyph: 0xf016
+        }, {
+            xtype: 'button',
+            text: 'Delete',
+            handler: 'customerDel',
+            glyph: 0xf1f8,
+            disabled: true,
+            bind: {
+                disabled: '{!customerlist.selection}'
+            }
+        }
     ]
 
 });

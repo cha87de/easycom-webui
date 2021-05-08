@@ -1,26 +1,26 @@
 /**
  *
  */
-Ext.define('albtec.easycom.view.timerecord.Window', {
+Ext.define('albtec.easycom.view.timerecord.ImportWindow', {
     extend: 'Ext.Window',
-    xtype: 'timerecordwindow',
+    xtype: 'timerecordimportwindow',
 
     requires: [
-        'albtec.easycom.view.timerecord.Form',
+        'albtec.easycom.view.timerecord.ImportForm',
         'albtec.easycom.view.main.MainModel',
-        'albtec.easycom.view.timerecord.WindowController'
+        'albtec.easycom.view.timerecord.ImportWindowController'
     ],
 
     viewModel: 'main',
-    controller: 'timerecordwindow',
+    controller: 'timerecordimportwindow',
 
     layout: 'fit',
     modal: true,
-    title: 'Time Record',
+    title: 'Time Record Import',
     closeAction: 'hide',
 
     items: [{
-        xtype: 'timerecordform',
+        xtype: 'timerecordimport',
         listeners: {
             'saveSuccessful': 'onSaveSuccessful'
         }

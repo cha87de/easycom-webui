@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 Ext.define('albtec.easycom.view.customer.Content', {
     extend: 'Ext.tab.Panel',
@@ -9,18 +9,18 @@ Ext.define('albtec.easycom.view.customer.Content', {
 
     requires: [
         'albtec.easycom.view.customer.Form',
-	'albtec.easycom.view.invoice.List',
-	'albtec.easycom.view.timerecord.List'//,
+        'albtec.easycom.view.invoice.List',
+        'albtec.easycom.view.timerecord.List'//,
         //'albtec.easycom.view.customer.ContentController'
     ],
 
     items: [{
-	        xtype: 'customerform'
-        }, {
-	        xtype: 'timerecordlist'
-        }, {
-	        xtype: 'invoiceoverview'
-        }
+        xtype: 'customerform'
+    }, {
+        xtype: 'timerecordlist'
+    }, {
+        xtype: 'invoiceoverview'
+    }
     ]
-    
+
 });

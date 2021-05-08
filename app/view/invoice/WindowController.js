@@ -8,11 +8,11 @@ Ext.define('albtec.easycom.view.invoice.WindowController', {
 
     alias: 'controller.invoicewindow',
 
-    onSaveSuccessful: function(){
-	    this.getView().close();
+    onSaveSuccessful: function () {
+        this.getView().close();
     },
-    
-    onClose: function() {
+
+    onClose: function () {
         this.getViewModel().get("customerlist.selection.invoices").rejectChanges();
         this.getViewModel().get('invoicelist.selection').reject();
         this.getViewModel().get("customerlist.selection.invoices").reload();
